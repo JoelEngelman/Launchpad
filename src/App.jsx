@@ -298,7 +298,7 @@ function App() {
           {/* FLUXIDE */}
           <a
             className="hub-card"
-            href="#"
+            href="https://joelengelman.github.io/FluxIDE/"
             onClick={(e) => e.preventDefault()}
           >
             <div className="hub-card-image">
