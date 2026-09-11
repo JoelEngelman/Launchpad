@@ -38,6 +38,13 @@ jobs:
       - name: Build Launchpad
         run: npm run build
 
+      - name: Polish production layout
+        run: |
+          cat >> dist/assets/*.css <<'EOF'
+          .navbar{backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important}.navbar-scrolled{backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important}
+          .hub-page{width:100%;min-height:100vh;overflow-x:hidden}.hub-content{width:100%;display:flex!important;flex-direction:column!important;align-items:center!important}.hub-hero{width:min(900px,calc(100% - 40px))!important;margin-left:auto!important;margin-right:auto!important}.hub-toolbar{width:min(1160px,calc(100% - 40px))!important;margin-left:auto!important;margin-right:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important}.hub-filters{display:flex!important;justify-content:center!important;align-items:center!important}.hub-projects{width:min(1160px,calc(100% - 40px))!important;margin-left:auto!important;margin-right:auto!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;justify-items:stretch!important}.hub-card{width:100%!important;min-width:0!important;margin:0!important;align-items:center!important;text-align:center!important}.hub-card-image{margin-left:auto!important;margin-right:auto!important}.hub-card-content{width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}.hub-card-top,.hub-card-footer{width:100%!important;justify-content:center!important}.hub-card-content h2,.hub-card-content p{margin-left:auto!important;margin-right:auto!important;text-align:center!important}.hub-card-note{text-align:center!important}.hub-bottom{width:min(1060px,calc(100% - 40px))!important;margin-left:auto!important;margin-right:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important}.hub-bottom>div{display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}.hub-create-button{align-self:center!important;margin-left:auto!important;margin-right:auto!important}@media(max-width:760px){.hub-toolbar,.hub-projects,.hub-bottom{width:calc(100% - 24px)!important}.hub-projects{grid-template-columns:1fr!important}}
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
